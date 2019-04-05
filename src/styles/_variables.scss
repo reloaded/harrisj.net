@@ -1,0 +1,11 @@
+/**
+ * Import the default Bootstrap variables, any Bootstrap variables that are not defined above
+ * will be set to default values by Bootstrap (below).
+ *
+ */
+
+$enable-transitions: true;
+
+$loading-msg-z-index: 99999;
+
+@import "~bootstrap/scss/variables";

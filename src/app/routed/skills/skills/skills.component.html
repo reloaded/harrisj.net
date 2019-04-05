@@ -1,0 +1,9 @@
+<div class="container">
+  <h2 id="page-title">{{page.title | async}}</h2>
+
+  <section id="skill-tree">
+    <app-skill-tree [config]="skillTreeConfig"
+                    (categoryClicked)="onCategoryClicked($event)"></app-skill-tree>
+  </section>
+
+</div>

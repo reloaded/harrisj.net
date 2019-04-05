@@ -1,0 +1,76 @@
+<div class="row">
+
+  <div id="skill-search" class="col-12">
+    <app-skill-search (keywordsSearched)="searchSkills($event)"></app-skill-search>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div id="skill-categories-xs" class="col">
+    <form>
+      <div class="input-group">
+        <div class="input-group-prepend d-none">
+          <label for="skill-category" class="input-group-text">Category</label>
+        </div>
+        <select name="skill-category"
+                id="skill-category"
+                class="form-control no-validate"
+                [(ngModel)]="selectedCategory">
+          <option [ngValue]="null">All</option>
+          <option *ngFor="let c of categorizedSkills" [ngValue]="c">{{c.category.name}}</option>
+        </select>
+      </div>
+    </form>
+  </div>
+
+  <div id="skill-categories-md" class="col-3">
+    <div id="skill-categories-nav"
+         class="nav"
+         role="tablist"
+         aria-orientation="vertical">
+      <a class="nav-link"
+         id="skill-category-"
+         data-toggle="pill"
+         href="javascript:void(0)"
+         role="tab"
+         aria-controls="skill-category-"
+         (click)="onCategoryClicked()"
+         [class.active]="!selectedCategory">
+        All
+        <!--<span class="skill-count">{{skills?.length || 0}}</span>-->
+      </a>
+
+      <a class="nav-link"
+         id="skill-category-{{c.category.id}}"
+         data-toggle="pill"
+         href="javascript:void(0)"
+         role="tab"
+         aria-selected="false"
+         [attr.aria-controls]="'skill-category-' + c.category.id"
+         (click)="onCategoryClicked(c)"
+         [class.active]="selectedCategory == c"
+         *ngFor="let c of categorizedSkills">{{c.category.name}}</a>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-9">
+    <div id="skills-content">
+      <div id="skill-category-{{selectedCategory?.category.id}}"
+           role="tabpanel"
+           [attr.aria-labelledby]="'skill-category-' + selectedCategory?.category.id">
+        <ul class="skills">
+          <ng-template ngFor let-c [ngForOf]="categorizedSkills">
+            <ng-template [ngIf]="selectedCategory == c || !selectedCategory">
+              <li class="skill" *ngFor="let s of c.skills">
+                {{s.name}}
+              </li>
+            </ng-template>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

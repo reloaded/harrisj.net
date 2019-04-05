@@ -1,0 +1,10 @@
+@import "~bootstrap/scss/forms";
+
+.form-control:not(.no-validate).ng-invalid:not(.ng-pristine),
+.form-control:not(.no-validate).ng-invalid.ng-touched {
+  @extend .is-invalid;
+}
+
+.form-control:not(.no-validate).ng-valid {
+  @extend .is-valid;
+}

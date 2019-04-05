@@ -1,0 +1,60 @@
+@import "../../../../styles/styles";
+
+#mentorship-contact {
+  @extend .text-center;
+  @extend .my-5;
+
+  #contact-title {
+    @extend .mb-3;
+  }
+
+  #contact-lead-in {
+    @extend .lead;
+  }
+
+  #contact-btn {
+    @extend .btn;
+    @extend .btn-outline-primary;
+  }
+}
+
+#mentorship-tiers {
+  @extend .mb-5;
+
+  #tiers {
+    @extend .card-deck;
+  }
+
+  .tier {
+    @extend .card;
+    @extend .rounded;
+    @extend .rounded-lg;
+    @extend .text-center;
+
+    .tier-body {
+      @extend .card-body;
+    }
+
+    .tier-title {
+      @extend .card-title;
+      @extend .mb-3;
+      @extend .text-black-50;
+    }
+
+    .tier-description {
+      @extend .card-text;
+      @extend .text-body;
+    }
+
+    .tier-price {
+      @extend .card-footer;
+      @extend .bg-white;
+      @extend .border-0;
+      color: #00c2ff;
+    }
+
+    .ideal-for {
+      @extend .text-muted;
+    }
+  }
+}

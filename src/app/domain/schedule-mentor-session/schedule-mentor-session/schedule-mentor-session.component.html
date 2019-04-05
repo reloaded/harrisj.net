@@ -1,0 +1,94 @@
+<form id="schedule-mentor-session-form" [formGroup]="mentorSchedulingForm" (ngSubmit)="scheduleMentorSession()">
+  <div class="form-row">
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email"
+               class="form-control invalid"
+               placeholder="j.doe@company.com"
+               type="email"
+               formControlName="email"
+               aria-describedby="email-help" />
+        <small id="email-help" class="form-text text-muted" *ngIf="emailControl().valid || (emailControl().pristine && emailControl().untouched)">
+          We all love privacy. I'll only use your email to contact you and will never share or sell it to marketing firms.
+        </small>
+        <div class="invalid-feedback" *ngIf="emailControl().invalid">
+          What's a good email I can use to reach you? This email will never be shared
+          or sold to third parties.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name"
+               type="text"
+               class="form-control"
+               placeholder="John Doe"
+               formControlName="name" />
+        <div class="invalid-feedback" *ngIf="nameControl().invalid">
+          Who do I have the honor of mentoring?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <label for="type">Type of Mentorship</label>
+        <select id="type"
+                name="type"
+                class="form-control"
+                formControlName="type">
+          <option value="discovery">Discovery</option>
+          <option value="spot">Spot</option>
+          <option value="freelance">Freelance</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="programTypeControl().invalid">
+          What type of mentorship are you interested in?
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <label for="outcome">Desired Outcome</label>
+        <select id="outcome"
+                name="outcome"
+                class="form-control"
+                formControlName="outcome">
+          <option value="Learn Domain Driven Design">Learn Domain Driven Design</option>
+          <option value="Learn Microservice Architecture">Learn Microservice Architecture</option>
+          <option value="Fill in knowledge gaps">Fill in knowledge gaps</option>
+          <option value="Change career focus">Change career focus</option>
+          <option value="Other">Other</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="outcomeControl().invalid">
+          What desired outcome would you like by end of the mentorship?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea id="message"
+              rows="4"
+              class="form-control"
+              formControlName="message"
+              placeholder="Please specify the goals you would like to achieve by the end of your mentorship."></textarea>
+    <div class="invalid-feedback" *ngIf="messageControl().invalid">
+      It helps to have additional details. What are your objectives with mentorship? Do you have
+      specific topics around technologies or design patterns in mind?
+    </div>
+  </div>
+
+  <re-captcha formControlName="recaptcha"
+              (resolved)="recaptchaToken($event)"></re-captcha>
+
+  <button id="submit-button"
+          [disabled]="isSubmitDisabled"
+          type="submit">Get Mentored</button>
+</form>

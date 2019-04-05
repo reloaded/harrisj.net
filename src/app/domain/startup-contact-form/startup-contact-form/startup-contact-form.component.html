@@ -1,0 +1,106 @@
+<form id="startup-contact-form" [formGroup]="startupContactForm" (ngSubmit)="submitStartupEmail()">
+  <div class="form-row">
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email"
+               class="form-control invalid"
+               placeholder="j.doe@company.com"
+               type="email"
+               formControlName="email"
+               aria-describedby="email-help" />
+        <small id="email-help"
+               class="form-text text-muted"
+               *ngIf="emailControl().valid || (emailControl().pristine && emailControl().untouched)">
+          We all love privacy. I'll only use your email to contact you and will never share or sell it to marketing firms.
+        </small>
+        <div class="invalid-feedback"
+             *ngIf="emailControl().invalid">
+          What's a good email I can use to reach you? This email will never be shared
+          or sold to third parties.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name"
+               type="text"
+               class="form-control"
+               placeholder="John Doe"
+               formControlName="name" />
+        <div class="invalid-feedback" *ngIf="nameControl().invalid">
+          Who do I have the honor of partnering with?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <label for="interest">Your Interest</label>
+        <select id="interest"
+                name="interest"
+                class="form-control"
+                formControlName="interest">
+          <option value="investor">Investor</option>
+          <option value="cofounder">Co-founder</option>
+          <option value="consultant">Consultant</option>
+          <option value="open-source">Open Source Project</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="interestControl().invalid">
+          What type of opportunity are you offering?
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6"
+         *ngIf="requiresBudget">
+      <div class="form-group">
+        <label for="budget" *ngIf="interestControl().value == 'investor'">Funding Amount</label>
+        <label for="budget" *ngIf="interestControl().value !== 'investor'">Budget</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="number"
+                 name="budget"
+                 formControlName="budget"
+                 id="budget"
+                 step="1000"
+                 min="5000"
+                 max="100000"
+                 placeholder="$5,000 - $100,000"
+                 class="form-control"/>
+        </div>
+        <div class="invalid-feedback" *ngIf="budgetControl().invalid">
+          <span *ngIf="interestControl().value == 'investor'">How much investment money are you looking to raise?</span>
+          <span *ngIf="interestControl().value == 'consultant'">
+            What's your project budget (if any)? If you don't have a budget figured out yet you can simply
+            give a ball park estimate.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea id="message"
+              rows="4"
+              class="form-control"
+              formControlName="message"
+              placeholder="Please provide details about your partnership opportunity."></textarea>
+    <div class="invalid-feedback" *ngIf="messageControl().invalid">
+      Please provide details about the opportunity you're providing.
+    </div>
+  </div>
+
+  <re-captcha formControlName="recaptcha"
+              (resolved)="recaptchaToken($event)"></re-captcha>
+
+  <button id="submit-button"
+          [disabled]="isSubmitDisabled"
+          type="submit">Contact</button>
+</form>

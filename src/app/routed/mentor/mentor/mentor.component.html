@@ -1,0 +1,66 @@
+<div class="container">
+  <h2 id="page-title">{{page.title | async}}</h2>
+
+  <section id="mentorship-tiers">
+
+    <div id="tiers">
+      <div class="tier">
+        <div class="tier-body">
+          <h2 class="tier-title"><small>Spot</small></h2>
+          <p class="tier-description">
+            Up to 1 hour of candid conversation and advice as needed with no long term commitment required.
+          </p>
+          <p class="ideal-for">
+            <small>Great for quick discovery sessions</small>
+          </p>
+        </div>
+        <div class="tier-price">
+          <h3>$150</h3>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-body">
+          <h2 class="tier-title"><small>Discovery</small></h2>
+          <p class="tier-description">
+            Professional team mentoring and collaboration to discover your business's domain, ubiquitous language and
+            bounded contexts.
+          </p>
+          <p class="ideal-for">
+            <small>Great for enterprises and businesses</small>
+          </p>
+        </div>
+        <div class="tier-price">
+          <h3>Inquire</h3>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-body">
+          <h2 class="tier-title"><small>Freelance</small></h2>
+          <p class="tier-description">
+            Up to 12 hours for personal one on one mentoring for advanced topics such as
+            Domain Driven Design, Microservice architecture and asynchronous event messaging.
+          </p>
+          <p class="ideal-for">
+            <small>Great for architects and solo freelancers</small>
+          </p>
+        </div>
+        <div class="tier-price">
+          <h3>$2,500</h3>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="mentorship-contact">
+
+    <h3 id="contact-title">Ready to level up your distributed software architecture game?</h3>
+
+    <p id="contact-lead-in">Let's schedule a free 15 minute call to ask questions, discuss details and decide if I'm your guy.</p>
+
+    <a id="contact-btn"
+       [routerLink]="['schedule']">Let's talk shop</a>
+  </section>
+</div>

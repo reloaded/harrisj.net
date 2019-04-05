@@ -1,0 +1,18 @@
+@import "../../../../styles/styles";
+
+#bio {
+  .bio-img {
+    @extend .d-block;
+    @extend .mx-auto;
+    @extend .img-thumbnail;
+    @extend .rounded-circle;
+    @extend .float-none;
+    @extend .float-sm-left;
+    @extend .mr-sm-3;
+  }
+}
+
+#my-name {
+  @extend .display-4;
+  @extend .text-center;
+}

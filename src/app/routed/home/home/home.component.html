@@ -1,0 +1,66 @@
+<div class="container-fluid px-0">
+
+  <section id="intro" class="home-section">
+    <div class="card">
+      <div class="card-body">
+        <h2 id="page-title"><em>{{page.title | async}}</em></h2>
+
+        <p class="lead">
+          My name is Jason Harris and I'm a senior full stack architect. I love designing application architecture using
+          domain driven design, S.O.L.I.D. principles and microservice patterns whenever possible.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="preferred-stack" class="home-section">
+    <div class="card border-0">
+      <div class="card-body">
+        <h3 class="card-title text-black-50 text-center">My favorite stack</h3>
+
+        <div id="preferred-skills-list" *ngIf="preferredSkills">
+          <div class="preferred-skill"
+              *ngFor="let s of preferredSkills">{{s.name}}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="past-companies" class="home-section">
+    <div class="card border-0">
+      <div class="card-body">
+        <h3 class="card-title text-black-50 text-center">I've collaborated with some awesome companies</h3>
+
+        <div id="past-company-list">
+          <div class="company">PLAYXPERT</div>
+          <div class="company">Kochava</div>
+          <div class="company">Frontier Communications</div>
+          <div class="company">Cunexus</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="startup-opportunity" class="home-section">
+    <div class="card border-0">
+      <div class="card-body">
+        <h3 class="card-title text-black-50 text-center">Have your own idea?</h3>
+
+        <p class="text-body text-center">Do you have a startup idea with opportunity for investment or collaboration? Let's
+        talk about it and see if I can help bring your idea to reality.</p>
+
+        <a [routerLink]="['/startup-opportunity']" id="startup-button">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="home-section">
+    <div class="card border-0">
+      <div class="card-body">
+        <h3 class="card-title text-black-50 text-center">Testimonials and recommendations</h3>
+
+        <p class="text-body text-center">People I've collaborated with have said some nice things...</p>
+      </div>
+    </div>
+  </section>
+</div>

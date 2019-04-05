@@ -1,0 +1,48 @@
+@import "../../../../styles/styles";
+
+#skill-search {
+  @extend .mb-4;
+}
+
+#skill-categories-xs {
+  @extend .d-block;
+  @extend .d-md-none;
+  @extend .mb-4;
+}
+
+#skill-categories-md {
+  @extend .d-none;
+  @extend .d-md-block;
+
+  #skill-categories-nav {
+    @extend .flex-column;
+    @extend .nav-pills;
+    @extend .text-wrap;
+
+    .nav-link {
+      .skill-count {
+        @extend .badge;
+        @extend .badge-secondary;
+        //@extend .badge-pill;
+      }
+
+      &.active .skill-count {
+        @extend .badge-light;
+      }
+    }
+  }
+}
+
+#skills-content {
+  //@extend .tab-content;
+
+  .skills {
+    @extend .list-group;
+    @extend .list-group-flush;
+  }
+
+  .skill {
+    @extend .list-group-item;
+    @extend .px-0;
+  }
+}

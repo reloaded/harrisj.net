@@ -1,0 +1,70 @@
+<section class="project"
+     *ngIf="project"
+     [id]="'project-' + project.sequenceNumber">
+  <div class="project-content">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <p class="project-role" title="Project Role">{{project.role}}</p>
+        <h2 class="project-name" title="Company">
+          {{project.name}}
+          <!--<span class="project-duration">{{project.endDate.diff(project.startDate, 'months')}} months</span>-->
+        </h2>
+      </div>
+      <div class="col-12 col-md-4 project-meta">
+        <span class="project-location" title="Project Location">
+          <i class="fas fa-map-marker-alt location-pin"></i>
+          <span class="location-name">{{project.location}}</span>
+        </span>
+        <span class="project-duration"
+              title="Project Duration">
+          <i class="fas fa-hourglass-half duration-icon"></i>
+          <span class="duration">
+            {{project.startDate.from(project.endDate, true)}}
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="project-description">
+      <p class="lead" *ngIf="!showFullDescription">
+        {{project?.description | slice : 0 : 220}}...
+        <a class="btn btn-link"
+           role="button"
+           (click)="expandProjectDescription()">[Read More]</a>
+      </p>
+      <p class="lead" *ngIf="showFullDescription">
+        {{project?.description}}
+        <a class="btn btn-link"
+           role="button"
+           (click)="collapseProjectDescription()"
+           *ngIf="showFullDescription">[Read Less]</a>
+      </p>
+    </div>
+
+    <div class="responsibilities">
+      <h6 class="responsibilities-title"><i class="responsibilities-title-icon"></i>Responsibilities</h6>
+
+      <ul class="responsibilities-list" *ngIf="project?.responsibilities?.length">
+        <li class="responsibility" *ngFor="let r of project.responsibilities">{{r}}</li>
+      </ul>
+
+      <p class="text-body" *ngIf="!project?.responsibilities?.length">No responsibilities have been added.</p>
+    </div>
+
+    <div class="achievements" *ngIf="project?.achievements?.length">
+      <h6 class="achievements-title"><i class="achievements-title-icon"></i>Achievements</h6>
+
+      <ul class="achievements-list">
+        <li class="achievement" *ngFor="let a of project.achievements">{{a}}</li>
+      </ul>
+    </div>
+
+    <div class="skills" *ngIf="project?.skills?.length">
+      <h6 class="skills-title"><i class="skills-title-icon"></i>Skills</h6>
+
+      <ul class="skill-list">
+        <li class="skill" *ngFor="let s of project.skills">{{s}}</li>
+      </ul>
+    </div>
+  </div>
+</section>

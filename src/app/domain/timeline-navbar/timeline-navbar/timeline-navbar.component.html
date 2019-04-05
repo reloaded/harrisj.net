@@ -1,0 +1,46 @@
+<perfect-scrollbar id="timeline-scroller"
+     #scroller="ngxPerfectScrollbar"
+     [config]="scrollConfig">
+
+  <div id="timeline"
+       [class.vertical]="vertical">
+
+    <ul id="timeline-navbar"
+        class="list-unstyled"
+        [class.list-inline]="!vertical"
+        [class.vertical]="vertical">
+
+      <li
+        class="timeline-event timeline-event-{{event.sequenceNumber}}"
+        [class.list-inline-item]="!vertical"
+        [class.selected]="selectedEvent && selectedEvent.sequenceNumber == event.sequenceNumber"
+        [style.height]="vertical ? event.width + '%' : 'auto'"
+        [style.width]="!vertical ? event.width + '%' : 'auto'"
+        *ngFor="let event of timelineEvents"
+        tooltip="{{event.name}}">
+
+        <div class="timeline-fill">
+          <!--<small class="timeline-duration">{{event.startDate.from(event.endDate, true)}}</small>-->
+        </div>
+        <span class="event-tack-reference-line"></span>
+        <a class="btn btn-link btn-block event-title"
+           tabindex="500"
+           (click)="scroller.directiveRef.scrollToElement('#timeline-navbar .timeline-event-' + event.sequenceNumber, -50); onEventClicked(event)"
+           role="button">
+          <i class="fas fa-circle fa-md event-tack"></i>
+          <span class="event-date">{{event.startDate.format('MMM YYYY')}}</span>
+          <small class="event-name">{{event.name}}</small>
+        </a>
+      </li>
+
+      <li class="now">
+        <span class="event-tack-reference-line"></span>
+        <i class="fas fa-circle fa-md event-tack"></i>
+        <span class="now-label">Now</span>
+      </li>
+
+    </ul>
+
+  </div>
+
+</perfect-scrollbar>

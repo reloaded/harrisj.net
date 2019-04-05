@@ -1,0 +1,221 @@
+$min-timeline-width: 1000px;
+$vertical-timeline-height: 770px;
+
+@import "../../../../styles/styles";
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+
+#timeline-scroller {
+  position: relative !important;
+}
+
+
+#timeline {
+  position: relative;
+  padding: 0 10px;
+  min-width: $min-timeline-width;
+
+  &.vertical {
+    height: $vertical-timeline-height;
+  }
+}
+
+#timeline-navbar {
+  position: relative;
+  z-index: 100;
+  margin: 0;
+
+  .timeline-event {
+    color: #6b6b6b;
+    position: relative;
+    margin: 0;
+    white-space: nowrap;
+  }
+  &:not(.vertical) .timeline-event {
+    padding: 0.5rem 0;
+  }
+
+  .event-tack-reference-line {
+    border-left: 1px dashed #d4d4d4;
+    border-top: 1px dashed #d4d4d4;
+    position: absolute;
+    width: 15px;
+    height: 10px;
+    border-right: 0 none;
+    border-bottom: 0 none;
+    border-top-left-radius: 12px;
+    top: 15px;
+  }
+
+  .event-tack {
+    position: absolute;
+    left: -9px;
+    top: 27px;
+    color: #d4d4d4;
+  }
+
+  .timeline-event.selected {
+    .event-tack {
+      color: #00c2ff;
+    }
+
+    .event-tack-reference-line {
+      border-left: 1px dashed #00c2ff;
+      border-top: 1px dashed #00c2ff;
+    }
+  }
+
+  .now {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70px;
+
+    .event-tack {
+      left: auto;
+      right: -8px;
+    }
+
+    .now-label {
+      display: block;
+      height: 38px;
+      line-height: 38px;
+    }
+
+    .event-tack-reference-line {
+      border-right: 1px dashed #d4d4d4;
+      border-left: 0 none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 12px;
+      right: 0;
+    }
+  }
+
+  .event-title {
+    text-align: left;
+    height: 54px;
+
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
+  .event-date,
+  .now .now-label {
+    color: #888888;
+    margin-left: 5px;
+    display: table;
+    margin-top: -13px;
+  }
+  .now .now-label {
+    margin-top: -5px;
+    margin-left: 20px;
+  }
+
+  .timeline-fill {
+    height: 2px;
+    background: #d1d1d1;
+    position: absolute;
+    left: 7px;
+    right: 7px;
+    top: 34px;
+    z-index: -50;
+    text-align: center;
+    line-height: 37px;
+
+    .timeline-duration {
+      display: none;
+    }
+  }
+
+
+  .event-name {
+    @extend .d-block;
+    @extend .px-1;
+    @extend .text-black-50;
+    background: #fff;
+    top: 28px;
+    margin: 0 auto;
+    width: fit-content;
+    position: absolute;
+    left: 0;
+    right: 0;
+    line-height: 100%;
+  }
+
+  .timeline-event.selected,
+  .timeline-event:hover {
+    .event-name {
+      background-color: transparent;
+    }
+
+    .timeline-fill {
+      background: rgba(0, 186, 255, 0.1);
+      height: 37px;
+      top: 15px;
+      left: 0;
+      right: 0;
+      border-radius: 12px;
+
+      .timeline-duration {
+        display: block;
+      }
+    }
+  }
+
+
+  &.vertical {
+    height: 100%;
+    width: 70px;
+
+    .timeline-event {
+      padding: 0 0.5rem;
+    }
+
+    .event-title {
+      height: 100%;
+    }
+
+    .event-tack {
+      left: 27px;
+      top: -9px;
+      color: #00c2ff;
+    }
+
+    .event-date,
+    .now .now-label,
+    .timeline-duration {
+      transform: rotate(90deg);
+      transform-origin: left top 0;
+    }
+
+    .timeline-fill {
+      width: 2px;
+      bottom: 0;
+      top: 0;
+      height: unset;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+    .timeline-event.selected .timeline-fill,
+    .timeline-event:hover .timeline-fill {
+      width: 38px;
+      top: 0;
+      bottom: 0;
+      height: unset;
+    }
+
+    .now {
+      top: unset;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 70px;
+    }
+  }
+}

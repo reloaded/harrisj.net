@@ -1,0 +1,14 @@
+<div class="container">
+  <h2 id="page-title">{{page.title | async}}</h2>
+
+  <section id="timeline">
+    <app-timeline-navbar [events]="projects"
+                         [defaultSequenceNumber]="defaultProjectSequenceNumber"
+                         (eventClicked)="timelineEventClicked($event)"
+                         (eventSelected)="timelineEventSelected($event)"></app-timeline-navbar>
+  </section>
+
+  <div id="timeline-project">
+    <app-project-details [project]="selectedProject"></app-project-details>
+  </div>
+</div>

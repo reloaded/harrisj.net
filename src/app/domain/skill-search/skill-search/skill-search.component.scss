@@ -1,0 +1,16 @@
+@import "../../../../styles/styles";
+
+#search-help {
+  @extend .form-text;
+  @extend .text-muted;
+}
+
+#clear-search {
+  @extend .btn;
+  @extend .btn-outline-danger;
+}
+
+#execute-search {
+  @extend .btn;
+  @extend .btn-outline-primary;
+}

@@ -1,0 +1,10 @@
+@import "../../../../styles/styles";
+
+#reasons-ended-up-here {
+  @extend .text-muted;
+}
+
+.http-code {
+  @extend .text-muted;
+  @extend .text-right;
+}

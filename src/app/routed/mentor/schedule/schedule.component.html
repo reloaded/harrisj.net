@@ -1,0 +1,18 @@
+<div class="container">
+  <h2 id="page-title">{{page.title | async}}</h2>
+
+  <section id="mentorship-contact" *ngIf="showEmailForm">
+    <app-schedule-mentor-session #contactForm="scheduleMentorship"
+                                 (sessionScheduled)="sessionScheduled($event)"></app-schedule-mentor-session>
+  </section>
+
+  <section id="confirmation" *ngIf="showEmailConfirmation">
+    <h3 class="text-success">
+      <i class="far fa-check-circle"></i>
+      Message Sent
+    </h3>
+    <p class="text-muted">
+      I'm excited to learn how I can help you meet your career goals. I'll follow up with you in a few days.
+    </p>
+  </section>
+</div>

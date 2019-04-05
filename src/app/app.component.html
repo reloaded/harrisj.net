@@ -1,0 +1,81 @@
+<nav id="top-nav">
+  <div id="nav-toggler"
+       *ngIf="mobileNavigation">
+    <button id="nav-toggle-btn"
+            [attr.aria-pressed]="navDrawerOpened"
+            (click)="toggleNavDrawer()">
+      <i class="fas fa-bars" *ngIf="!navDrawerOpened"></i>
+      <i class="fas fa-times" *ngIf="navDrawerOpened"></i>
+    </button>
+  </div>
+
+  <ul id="top-nav-list" *ngIf="!mobileNavigation || navDrawerOpened">
+    <li class="nav-item">
+      <a class="nav-link"
+         [ngClass]="{
+         'disabled': homeRla.isActive}"
+         [routerLink]="['']"
+         [routerLinkActive]
+         [routerLinkActiveOptions]="{exact: true}"
+         #homeRla="routerLinkActive">Home</a>
+    </li>
+    <li class="nav-item" *ngFor="let nav of navItems">
+      <a class="nav-link"
+         [ngClass]="{
+         'btn btn-small rounded-pill': nav.linkText === 'Say Hello' && !mobileNavigation,
+         'btn-outline-info': !rla.isActive && nav.linkText === 'Say Hello' && !mobileNavigation,
+         'disabled': rla.isActive && (mobileNavigation || nav.linkText !== 'Say Hello'),
+         'btn-info': rla.isActive && !mobileNavigation && nav.linkText === 'Say Hello'
+         }"
+         [routerLink]="nav.routerLink"
+         [routerLinkActive]
+         [routerLinkActiveOptions]="{exact: false}"
+         #rla="routerLinkActive">{{nav.linkText}}</a>
+    </li>
+  </ul>
+</nav>
+
+<main id="page" [class.d-none]="navDrawerOpened || isRouteLoading" [@slideInOutAnimation]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+
+  <div id="footer">
+    <div class="row">
+      <div id="social-networks" class="col-6">
+        <a href="https://www.linkedin.com/in/elitereloaded"
+           target="_blank"
+           class="linkedin-btn outbound-link social-network">
+          <i class="fab fa-linkedin fa-2x"></i>
+        </a>
+        <a href="https://github.com/reloaded"
+           target="_blank"
+           class="github-btn outbound-link social-network">
+          <i class="fab fa-github-square fa-2x"></i>
+        </a>
+      </div>
+      <div id="copyright" class="col-6">
+        <div class="pr-2">
+          Handcrafted by me.
+          <a href="https://github.com/reloaded/harrisj.net"
+             target="_blank"
+             class="d-block d-md-inline outbound-link portfolio-src-link">
+            <small class="text-muted">View source</small>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div id="route-loading" class="d-none" [class.d-block]="isRouteLoading">
+  <div class="bar">
+    <i class="fas fa-circle sphere"></i>
+    <div class="text-center text-muted text-black-50">Doing stuff...</div>
+  </div>
+</div>
+
+
+<div class="loading" *ngIf="activeBackgroundTasks | async">
+  Loading...
+</div>
+

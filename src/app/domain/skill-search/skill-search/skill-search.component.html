@@ -1,0 +1,29 @@
+<div id="skill-search">
+  <form id="skill-search-form" [formGroup]="searchForm">
+    <div class="input-group">
+      <div class="input-group-prepend d-none d-md-block">
+        <label class="input-group-text"
+               for="keywords">Keywords</label>
+      </div>
+      <input type="text"
+             id="keywords"
+             class="form-control no-validate"
+             aria-describedby="search-help"
+             formControlName="keywords"
+             placeholder="Find your desired skills" />
+      <div class="input-group-append">
+        <button id="execute-search"
+                *ngIf="!keywordsControl().dirty"><i class="fas fa-search"></i></button>
+        <button id="clear-search"
+                *ngIf="keywordsControl().dirty"
+                (click)="clearSearch()"><i class="fas fa-times"></i></button>
+      </div>
+      <small id="search-help">
+        Let's figure out if I'll be a good addition to your team. Type in space or comma separated
+        keywords to narrow down your desired skills. In most cases you can use common abbreviations as well.
+        E.g. developer operations and devops will match the same results.
+      </small>
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,75 @@
+@import "../../../../styles/styles";
+
+.project {
+  @extend .text-body;
+
+  .project-name {
+    color: #00c2ff;
+  }
+
+  .project-role {
+    @extend .h5;
+  }
+
+  .project-description {
+    @extend .my-3;
+  }
+
+  .project-meta {
+    @extend .text-muted;
+    @extend .text-left;
+    @extend .text-md-right;
+
+    .project-location {
+      @extend .d-block;
+    }
+
+    .location-name {
+      @extend .text-body;
+    }
+
+    .location-pin {
+      @extend .text-danger;
+      @extend .mr-2;
+    }
+
+    .project-duration {
+      @extend .d-block;
+    }
+
+    .duration-icon {
+      @extend .mr-2;
+      color: #800080;
+    }
+  }
+
+  .achievements-title,
+  .skills-title,
+  .responsibilities-title {
+    @extend .text-secondary;
+  }
+
+  .achievements-title-icon,
+  .skills-title-icon,
+  .responsibilities-title-icon {
+    @extend .mr-2;
+  }
+
+  .responsibilities-title-icon {
+    @extend .text-body;
+    @extend .fas;
+    @extend .fa-chess-pawn;
+  }
+
+  .achievements-title-icon {
+    @extend .text-warning;
+    @extend .fas;
+    @extend .fa-trophy;
+  }
+
+  .skills-title-icon {
+    color: #800080;
+    @extend .fab;
+    @extend .fa-leanpub;
+  }
+}
